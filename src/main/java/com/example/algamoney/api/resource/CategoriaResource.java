@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class CategoriaResource {
 
     @PostMapping
 //    @ResponseStatus(HttpStatus.CREATED) //para retornar o status 201 CREATED ao se executar o método.
-    public ResponseEntity<Categoria> criar(@RequestBody Categoria categoria, HttpServletResponse response){
+    public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse response){
         //@RequestBody pra converter a entrada do json direto num objeto Categoria.
         //HttpServletResponse pra enviar informação de como acessar categoria recém criada no header.
        Categoria categoriaSalva = categoriaRepository.save(categoria);
